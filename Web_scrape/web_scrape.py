@@ -31,6 +31,9 @@ for i in range(1, 10):
         f'//*[@id="table_block_n2_and_content_wrapper"]/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table[2]/tbody/tr[104]/td/a[{i}]')
     next_page.click()
 
+# instead of increment by 1 on this xpath, find the last row of the table
+
+
 # printing course name first
 # try:
 #     open_link = driver.find_element_by_xpath(
