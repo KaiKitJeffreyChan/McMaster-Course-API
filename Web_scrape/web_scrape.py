@@ -14,7 +14,7 @@ for i in range(1, 10):
         '//*[@id="table_block_n2_and_content_wrapper"]/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table[2]/tbody/tr')
 
     # iterate all rows and print info,
-    for j in range(1, len(list_rows)-1):
+    for j in range(3, len(list_rows)-1):
         # printing units(all course stuff)
         try:
             open_link = driver.find_element_by_xpath(
@@ -23,6 +23,11 @@ for i in range(1, 10):
 
             units = driver.find_element_by_xpath(
                 f'//*[@id="table_block_n2_and_content_wrapper"]/table/tbody/tr[2]/td[2]/table/tbody/tr/td/table[2]/tbody/tr[{j}]/td[2]/table/tbody/tr/td/div[2]').text
+
+            with open('courseInfo.csv', 'a', newline='') as f:
+                thewriter = csv.writer(f)
+                thewriter.writerow([units])
+
             print(units)
         except:
             print("no course units")
