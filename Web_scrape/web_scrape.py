@@ -9,7 +9,7 @@ driver.get(
 driver.implicitly_wait(5)
 
 # how many pages of courses there are
-for i in range(2, 32):
+for i in range(2, 33):
 
     # returns the number of rows within the table
     list_rows = driver.find_elements_by_xpath(
