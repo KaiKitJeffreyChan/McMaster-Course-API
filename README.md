@@ -13,7 +13,7 @@ FYI, This only scrapes information from the McMaster Calender (I noticed that it
 
 ### List all Courses
 
-** Definitions **
+**Definitions**
 
 `GET /courses`
 
