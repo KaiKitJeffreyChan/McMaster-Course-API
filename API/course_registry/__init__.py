@@ -18,11 +18,21 @@ api = Api(app)
 
 #         return markdown.markdown(content)
 
+courses = {"jeff": {"age": 19, "gender": "male"},
+           "lew": {"age": 9, "gender": "blah"}}
+
 
 class HelloWorld(Resource):
-    def get(self):
+    def get(self, course):
         # must return something serializable
-        return {"data": "hello world", "message": "hoiiiii"}
+        return courses[course]
+
+    def post(self):
+        return {"data": "posted", "message": "hoiiiii"}
 
 
-api.add_resource(HelloWorld, "/helloworld")
+# if you pass something in <> you will be able to access it within your request
+# api.add_resource(HelloWorld, "/helloworld/<string:course>/<int:test>")
+
+
+api.add_resource(HelloWorld, "/helloworld/<string:course>")
