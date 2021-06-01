@@ -57,7 +57,7 @@ class Courses(Resource):
         else:
             return courses, 200
 
-    # edit a selected course that already exits
+    # edit a selected course tha already exits
     def put(self, course_id):
         abort_if_not_exits(course_id)
         args = course_required_args.parse_args()
