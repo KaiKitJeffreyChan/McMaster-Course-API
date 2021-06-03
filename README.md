@@ -107,13 +107,11 @@ If course with identifier already exists, overwrites it
 
 ```json
 {
-  "CLASSICS 1A03 - Introduction to Classical Archaeology": {
-        "identifier": "1A03",
-        "name": "CLASSICS 1A03 - Introduction to Classical Archaeology",
-        "units": "3 unit(s)",
-        "description": "A study of the history and methodology of Greek and Roman archaeology illustrated with materials from excavated sites.",
-        "other": "Three lectures; one term"
-  }
+    "identifier": "1A03",
+    "name": "CLASSICS 1A03 - Introduction to Classical Archaeology",
+    "units": "3 unit(s)",
+    "description": "A study of the history and methodology of Greek and Roman archaeology illustrated with materials from excavated sites.",
+    "other": "Three lectures; one term"
 }
 ```
 
