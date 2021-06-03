@@ -118,7 +118,7 @@ If course with identifier already exists, overwrites it
 --`204 No Content` happened successfully but no content to return
 
 
-##Scraping Script
+## Scraping Script
 
 Returns CSV of McMaster course information.
 Scraped data using Selenium library.
