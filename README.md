@@ -11,6 +11,8 @@ FYI, This only scrapes information from the McMaster Calender (I noticed that it
 
 ## Usage
 
+```https://mcmaster-course-api.herokuapp.com```
+
 ### List all Courses
 
 **Definitions**
@@ -22,24 +24,43 @@ FYI, This only scrapes information from the McMaster Calender (I noticed that it
 - `200 OK` on success
 
 ```json
-[
-    {
-        "identifier": "1XC3",
-        "name": "Computer Science Practice and Expirience: Development Basics 1XC3",
-        "units": 4,
-        "description": "this course blah blah blah",
-        "other": "prerequisites : blah blah, Antirequisites: ",
+{
+    "CLASSICS 1A03 - Introduction to Classical Archaeology": {
+        "identifier": "1A03",
+        "name": "CLASSICS 1A03 - Introduction to Classical Archaeology",
+        "units": "3 unit(s)",
+        "description": "A study of the history and methodology of Greek and Roman archaeology illustrated with materials from excavated sites.",
+        "other": "Three lectures; one term"
+    },
+    "CLASSICS 1B03 - An Introduction to Ancient Myth and Literature": {
+        "identifier": "1B03",
+        "name": "CLASSICS 1B03 - An Introduction to Ancient Myth and Literature",
+        "units": "3 unit(s)",
+        "description": "A study of Greek and Roman mythology and literature. Texts such as Homer, Virgil and Greek tragedies will be read in    
+        translation.",
+        "other": "Two lectures, one tutorial; one term"
     }
-    {
-        "identifier": "1XD3",
-        "name": "Introduction to Design Thinking",
-        "units": 3,
-        "description": "this course blah blah blah",
-        "other": "prerequisites : blah blah, Antirequisites: ",
-    }
-]
+    ...
+}
 
 ```
+
+### Edit existing course
+
+**Definitions**
+
+`PUT /courses/<identifier>`
+
+**Arguments** 
+
+- `"identifier" : string` unique identifier for the course
+- `"name": string` friendly name for the course with course code
+- `"units": int` how many units is the course
+- `"description": string` description of the course if there is any
+- `"other": string` anything additional to add, course requisites, semesters taught
+
+-- `201 Created` on success
+-- `404 Not Found` if the course does not exist
 
 ### Adding a New Course
 
@@ -63,11 +84,13 @@ If course with identifier already exists, overwrites it
 
 ```json
 {
-  "identifier": "1XC3",
-  "name": "Computer Science Practice and Expirience: Development Basics 1XC3",
-  "units": 4,
-  "description": "this course blah blah blah",
-  "other": "prerequisites : blah blah, Antirequisites: "
+  "CLASSICS 1A03 - Introduction to Classical Archaeology": {
+        "identifier": "1A03",
+        "name": "CLASSICS 1A03 - Introduction to Classical Archaeology",
+        "units": "3 unit(s)",
+        "description": "A study of the history and methodology of Greek and Roman archaeology illustrated with materials from excavated sites.",
+        "other": "Three lectures; one term"
+  }
 }
 ```
 
@@ -84,11 +107,13 @@ If course with identifier already exists, overwrites it
 
 ```json
 {
-  "identifier": "1XC3",
-  "name": "Computer Science Practice and Expirience: Development Basics 1XC3",
-  "units": 4,
-  "description": "this course blah blah blah",
-  "other": "prerequisites : blah blah, Antirequisites: "
+  "CLASSICS 1A03 - Introduction to Classical Archaeology": {
+        "identifier": "1A03",
+        "name": "CLASSICS 1A03 - Introduction to Classical Archaeology",
+        "units": "3 unit(s)",
+        "description": "A study of the history and methodology of Greek and Roman archaeology illustrated with materials from excavated sites.",
+        "other": "Three lectures; one term"
+  }
 }
 ```
 
