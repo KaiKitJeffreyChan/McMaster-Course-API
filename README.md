@@ -40,7 +40,7 @@ FYI, This only scrapes information from the McMaster Calender (I noticed that it
         translation.",
         "other": "Two lectures, one tutorial; one term"
     }
-    ...
+ 
 }
 
 ```
