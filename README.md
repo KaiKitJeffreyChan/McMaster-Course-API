@@ -15,15 +15,15 @@
 - `200 OK` on success
 
 ```json
-{
-    "CLASSICS 1A03 - Introduction to Classical Archaeology": {
+[
+    {
         "identifier": "1A03",
         "name": "CLASSICS 1A03 - Introduction to Classical Archaeology",
         "units": "3 unit(s)",
         "description": "A study of the history and methodology of Greek and Roman archaeology illustrated with materials from excavated sites.",
         "other": "Three lectures; one term"
     },
-    "CLASSICS 1B03 - An Introduction to Ancient Myth and Literature": {
+    {
         "identifier": "1B03",
         "name": "CLASSICS 1B03 - An Introduction to Ancient Myth and Literature",
         "units": "3 unit(s)",
@@ -32,7 +32,7 @@
         "other": "Two lectures, one tutorial; one term"
     }
  
-}
+]
 
 ```
 
