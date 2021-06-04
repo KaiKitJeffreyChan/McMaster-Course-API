@@ -86,17 +86,15 @@ class Courses(Resource):
                 abort_if_does_not_exist()
         else:
             # all courses
-            print("ALL COURSES")
-            test = {}
+            all_courses = []
             courses = CourseModel.query.all()
-            for idx, course in enumerate(courses):
-                test[idx] = {"identifier": course.identifier,
-                             "name": course.name,
-                             "untis": course.units,
-                             "description": course.description,
-                             "other": course.other}
-            print(test)
-            return test
+            for course in enumerate(courses):
+                all_courses += [{"identifier": course.identifier,
+                                 "name": course.name,
+                                 "untis": course.units,
+                                 "description": course.description,
+                                 "other": course.other}]
+            return all_courses, 200
 
     @marshal_with(resouce_fields)
     def put(self, course_id):
