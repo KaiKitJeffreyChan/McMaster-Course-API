@@ -10,20 +10,16 @@ api = Api(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
 
-# course model
-
 
 class CourseModel(db.Model):
     identifier = db.Column(db.String(100), primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-    units = db.Column(db.Integer, nullable=False)
+    units = db.Column(db.String(50), nullable=False)
     description = db.Column(db.String(600), nullable=False)
     other = db.Column(db.String(400), nullable=False)
 
-    # def __repr__(self):
-    #     return f"identifier = {identifier}, name = {name}, units = {units}, description = {description}, other={other}"
-
-# db.create_all()
+    def __repr__(self):
+        return f"identifier = {identifier}, name = {name}, units = {units}, description = {description}, other={other}"
 
 
 course_required_args = reqparse.RequestParser()
@@ -33,17 +29,20 @@ course_required_args.add_argument(
 course_required_args.add_argument(
     "name", type=str, help="Full course name is required", required=True)
 course_required_args.add_argument(
-    "units", type=int, help="Number of units is required", required=True)
+    "units", type=str, help="Number of units is required", required=True)
 course_required_args.add_argument(
     "description", type=str, help="Course description is required", required=True)
 course_required_args.add_argument(
     "other", type=str, help="Other content is required", required=True)
 
+# Used to add all courses from csv to database ---------------------------
 
-# counter = 0
+# courses, counter = {}, 0
 # with open("final.csv", "r") as fl:
 #     csv_reader = reader(fl)
+
 #     for row in csv_reader:
+
 #         if counter == 0:
 #             counter += 1
 #             pass
@@ -51,16 +50,19 @@ course_required_args.add_argument(
 #             # row[0] entire name of course including code
 #             x = row[0].split()
 #             y = " ".join(x[0:2])
-#             courses[counter] = {"identifier": y[1],
-#                                 "name": row[0],
-#                                 "units": row[1],
-#                                 "description": row[2],
-#                                 "other": row[3]}
+#             print(y)
+#             course = CourseModel(
+#                 identifier=y, name=row[0], units=row[1], description=row[2], other=row[3])
+#             db.session.add(course)
+#             db.session.commit()
+#             counter += 1
+
+# ----------------------------------------------------------------------------
 
 resouce_fields = {
     "identifier": fields.String,
     "name": fields.String,
-    "units": fields.Integer,
+    "units": fields.String,
     "description": fields.String,
     "other": fields.String
 }
@@ -89,11 +91,11 @@ class Courses(Resource):
             all_courses = []
             courses = CourseModel.query.all()
             for course in enumerate(courses):
-                all_courses += [{"identifier": course.identifier,
-                                 "name": course.name,
-                                 "untis": course.units,
-                                 "description": course.description,
-                                 "other": course.other}]
+                all_courses += [{"identifier": course[1].identifier,
+                                 "name": course[1].name,
+                                 "units": course[1].units,
+                                 "description": course[1].description,
+                                 "other": course[1].other}]
             return all_courses, 200
 
     @marshal_with(resouce_fields)
@@ -112,14 +114,15 @@ class Courses(Resource):
         return result, 201
 
     @marshal_with(resouce_fields)
-    def post(self, course_id):
+    def post(self):
         args = course_required_args.parse_args()
-        result = CourseModel.query.filter_by(identifier=course_id).first()
+        result = CourseModel.query.filter_by(
+            identifier=args["identifier"]).first()
         if result:
             abort_if_exist()
 
         course = CourseModel(
-            identifier=course_id, name=args['name'], units=args['units'], description=args['description'], other=args['other'])
+            identifier=args["identifier"], name=args['name'], units=args['units'], description=args['description'], other=args['other'])
         db.session.add(course)
         db.session.commit()
         return course, 201
