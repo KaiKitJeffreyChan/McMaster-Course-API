@@ -17,14 +17,14 @@
 ```json
 [
     {
-        "identifier": "1A03",
+        "identifier": "CLASSICS 1A03",
         "name": "CLASSICS 1A03 - Introduction to Classical Archaeology",
         "units": "3 unit(s)",
         "description": "A study of the history and methodology of Greek and Roman archaeology illustrated with materials from excavated sites.",
         "other": "Three lectures; one term"
     },
     {
-        "identifier": "1B03",
+        "identifier": "CLASSICS 1A03",
         "name": "CLASSICS 1B03 - An Introduction to Ancient Myth and Literature",
         "units": "3 unit(s)",
         "description": "A study of Greek and Roman mythology and literature. Texts such as Homer, Virgil and Greek tragedies will be read in    
@@ -46,12 +46,28 @@
 
 - `"identifier" : string` unique identifier for the course
 - `"name": string` friendly name for the course with course code
-- `"units": int` how many units is the course
+- `"units": string` how many units is the course, add unit/unit(s) beside number
 - `"description": string` description of the course if there is any
 - `"other": string` anything additional to add, course requisites, semesters taught
 
+**Response**
+
 -- `201 Created` on success
 -- `404 Not Found` if the course does not exist
+
+-- Updated course
+```json
+
+{
+    "identifier": "CLASSICS 1A03",
+    "name": "CLASSICS 1A03 - Introduction to Classical Archaeology",
+    "units": "3 unit(s)",
+    "description": "A study of the history and methodology of Greek and Roman archaeology illustrated with materials from excavated sites.",
+    "other": "Three lectures; one term"
+}
+
+```
+
 
 ### Adding a New Course
 
@@ -63,7 +79,7 @@
 
 - `"identifier" : string` unique identifier for the course
 - `"name": string` friendly name for the course with course code
-- `"units": int` how many units is the course
+- `"units": string` how many units is the course, add unit/unit(s) beside number
 - `"description": string` description of the course if there is any
 - `"other": string` anything additional to add, course requisites, semesters taught
 
@@ -74,15 +90,15 @@ If course with identifier already exists, overwrites it
 -- `201 Created` on success
 
 ```json
+
 {
-  "CLASSICS 1A03 - Introduction to Classical Archaeology": {
-        "identifier": "1A03",
-        "name": "CLASSICS 1A03 - Introduction to Classical Archaeology",
-        "units": "3 unit(s)",
-        "description": "A study of the history and methodology of Greek and Roman archaeology illustrated with materials from excavated sites.",
-        "other": "Three lectures; one term"
-  }
+    "identifier": "CLASSICS 1A03",
+    "name": "CLASSICS 1A03 - Introduction to Classical Archaeology",
+    "units": "3 unit(s)",
+    "description": "A study of the history and methodology of Greek and Roman archaeology illustrated with materials from excavated sites.",
+    "other": "Three lectures; one term"
 }
+
 ```
 
 ### Lookup Course Details
@@ -98,7 +114,7 @@ If course with identifier already exists, overwrites it
 
 ```json
 {
-    "identifier": "1A03",
+    "identifier": "CLASSICS 1A03",
     "name": "CLASSICS 1A03 - Introduction to Classical Archaeology",
     "units": "3 unit(s)",
     "description": "A study of the history and methodology of Greek and Roman archaeology illustrated with materials from excavated sites.",
