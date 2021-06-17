@@ -1,11 +1,13 @@
 from flask import Flask
 from flask_restful import Api, Resource, reqparse, abort, fields, marshal_with
 from flask_sqlalchemy import SQLAlchemy
+from flask_cors import CORS
 from csv import reader
 import markdown
 import os
 
 app = Flask(__name__)
+CORS(app)
 api = Api(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
 db = SQLAlchemy(app)
@@ -83,7 +85,7 @@ class Courses(Resource):
             # single course
             result = CourseModel.query.filter_by(identifier=course_id).first()
             if result and course_id:
-                return result, 200
+                return result, 200, {'Access-Control-Allow-Origin': '*'}
             else:
                 abort_if_does_not_exist()
         else:
@@ -96,7 +98,7 @@ class Courses(Resource):
                                  "units": course[1].units,
                                  "description": course[1].description,
                                  "other": course[1].other}]
-            return all_courses, 200
+            return all_courses, 200, {'Access-Control-Allow-Origin': '*'}
 
     @marshal_with(resouce_fields)
     def put(self, course_id):
