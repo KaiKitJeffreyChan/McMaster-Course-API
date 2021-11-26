@@ -27,8 +27,7 @@
         "identifier": "CLASSICS 1A03",
         "name": "CLASSICS 1B03 - An Introduction to Ancient Myth and Literature",
         "units": "3 unit(s)",
-        "description": "A study of Greek and Roman mythology and literature. Texts such as Homer, Virgil and Greek tragedies will be read in    
-        translation.",
+        "description": "A study of Greek and Roman mythology and literature. Texts such as Homer, Virgil and Greek tragedies will be read in translation.",
         "other": "Two lectures, one tutorial; one term"
     }
  
